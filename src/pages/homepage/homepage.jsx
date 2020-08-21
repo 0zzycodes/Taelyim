@@ -99,30 +99,6 @@ class Homepage extends React.Component {
                 nos: 100,
               }}
             />
-            <CoursePreview
-              data={{
-                imageUrl: flutter,
-                title: "Flutter Developer Tutorial Bootcamp 2020",
-                instructor: "Ozzycodes",
-                duration: "5h 20m",
-                price: 90,
-                rating: rating,
-                category: "Programming",
-                nos: 100,
-              }}
-            />
-            <CoursePreview
-              data={{
-                imageUrl: flutter,
-                title: "Flutter Developer Tutorial Bootcamp 2020",
-                instructor: "Ozzycodes",
-                duration: "5h 20m",
-                price: 90,
-                rating: rating,
-                category: "Programming",
-                nos: 100,
-              }}
-            />
           </div>
         </section>
       </div>

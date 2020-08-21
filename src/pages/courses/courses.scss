@@ -1,0 +1,120 @@
+$tablet: 850px;
+$smartphone: 500px;
+$primaryColor: #ff8715;
+$secondaryColor: #272c42;
+$blackColor: #0e0e0e;
+$grayColor: #707070;
+$whiteColor: #ffffff;
+$shadow: 0px 5px 6px #ff8715;
+
+// Mixin
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+
+.courses_page {
+  .courses_page_container {
+    display: flex;
+    justify-content: space-between;
+    .side {
+      width: 25%;
+      min-height: 40em;
+      .head_block {
+        height: 6em;
+        width: 100%;
+        padding: 2em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $secondaryColor;
+        h3 {
+          color: $primaryColor;
+        }
+        .course_count {
+          height: 2em;
+          width: 2em;
+          font-size: 2em;
+          line-height: 0px !important;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: $shadow;
+          box-sizing: border-box;
+          color: $whiteColor;
+        }
+      }
+      .course_categories {
+        box-shadow: 0px 5px 6px $grayColor;
+        padding: 0 2em;
+        .categories_heading {
+          font-size: 1.2em;
+          font-weight: 100;
+          display: block;
+          padding: 1.3em 0;
+          border-bottom: 1px solid $primaryColor;
+          margin-bottom: 1.5em;
+        }
+        .categories {
+          .category {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 1.3em;
+            padding: 0.5em 0;
+            .radio {
+              height: 1.8em;
+              width: 1.8em;
+              border: 0.2em solid $primaryColor;
+              border-radius: 50%;
+              margin-right: 1.5em;
+              display: flex;
+              .dot {
+                height: 1em;
+                width: 1em;
+                margin: auto;
+                border-radius: 50%;
+                background-color: $primaryColor;
+              }
+            }
+            .course_count {
+              margin-left: auto;
+              color: $primaryColor;
+              font-size: 1.5em;
+            }
+          }
+        }
+      }
+    }
+    .main {
+      width: 70%;
+      .main_nav {
+        height: 6em;
+        width: 100%;
+        padding: 2em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0px 0px 3px 1px $primaryColor;
+        .main_nav_links {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .main_nav_link {
+            margin: 0 2em;
+            font-size: 1.2em;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
