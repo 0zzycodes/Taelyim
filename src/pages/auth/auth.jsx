@@ -4,10 +4,11 @@ import CustomHero from "../../components/custom-hero/custom-hero";
 import Login from "../../components/login/login";
 import "./auth.scss";
 import Register from "../../components/register/register";
+import InstructorRegister from "../../components/instructorRegister/instructorRegister";
 const Auth = ({ history }) => {
   return (
     <div className="auth">
-      <CustomHero title="login / register" />
+      {/* <CustomHero title="login / register" /> */}
       <div className="login_register">
         <div className="login_register_nav">
           <ul>
@@ -37,12 +38,30 @@ const Auth = ({ history }) => {
                 REGISTER
               </Link>
             </li>
+            <li>
+              <Link
+                to="/auth/register-as-an-instructor"
+                style={
+                  history.location.pathname ===
+                  "/auth/register-as-an-instructor"
+                    ? { color: "#ff8715" }
+                    : {}
+                }
+              >
+                REGISTER AS AN INSTRUCTOR
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="auth_container">
           <div className="vector"></div>
           <Route exact path={`/auth/login`} component={Login} />
           <Route exact path={`/auth/register`} component={Register} />
+          <Route
+            exact
+            path={`/auth/register-as-an-instructor`}
+            component={InstructorRegister}
+          />
         </div>
       </div>
     </div>

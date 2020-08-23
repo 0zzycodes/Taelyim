@@ -7,7 +7,11 @@ const CoursePreview = ({
   return (
     <div className="course-preview">
       <img src={imageUrl} alt="course img preview" />
-      <h1>{title}</h1>
+      <h1>
+        <Link to={`/courses/${title.split(" ").join("-").toLowerCase()}`}>
+          {title}
+        </Link>
+      </h1>
       <p>{nos} student enrolled</p>
       <p>Created by {instructor}</p>
       <div className="duration_price">

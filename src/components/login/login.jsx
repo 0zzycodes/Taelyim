@@ -65,7 +65,9 @@ export default class Login extends Component {
       <div className="login">
         <div>
           {" "}
-          <h3 className="title">Sign in to your account</h3>
+          <h3 className="title">
+            Welcome Back <span>Login</span>
+          </h3>
           {errorMessage !== "" ? (
             <span className="error">{errorMessage}</span>
           ) : null}

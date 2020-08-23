@@ -123,3 +123,16 @@ a {
   justify-content: space-between;
   align-items: center;
 }
+.error {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: lighten($color: $primaryColor, $amount: 20);
+  color: $primaryColor;
+  padding: 1em !important;
+  font-size: 1.1em;
+  text-align: center;
+  font-weight: 600;
+  z-index: 0 !important;
+}

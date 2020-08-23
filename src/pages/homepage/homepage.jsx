@@ -41,15 +41,15 @@ class Homepage extends React.Component {
         </section>
         <section className="courses">
           <div className="heading">
-            <h2>Courses</h2>
+            <h2>Latest Courses</h2>
           </div>
-          <div className="courses-nav">
+          {/* <div className="courses-nav">
             <ul>
               <li style={{ color: "#fda82b" }}>FREE</li>
               <li className="paid">PAID</li>
               <li>DISCOUNT</li>
             </ul>
-          </div>
+          </div> */}
           <div className="courses_container">
             <CoursePreview
               data={{

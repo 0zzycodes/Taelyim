@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -6,7 +6,7 @@ import logo from "../../assets/logo.png";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 
 import "./header.scss";
-const Header = ({ currentUser, showSearch, history }) => {
+const Header = ({ currentUser, history }) => {
   return (
     <header className="header">
       <div className="logo">
@@ -33,7 +33,8 @@ const Header = ({ currentUser, showSearch, history }) => {
             <Link
               to="/courses"
               style={
-                history.location.pathname === "/courses"
+                history.location.pathname === "/courses" ||
+                history.location.pathname.split("/")[1] === "courses"
                   ? {
                       color: "#fda82b",
                       fontWeight: "600",
@@ -74,12 +75,54 @@ const Header = ({ currentUser, showSearch, history }) => {
               CONTACT US
             </Link>
           </li>
+          {currentUser && (
+            <li className="nav-link">
+              <Link
+                to="/my-couses"
+                style={
+                  history.location.pathname === "/my-couses"
+                    ? {
+                        color: "#fda82b",
+                        fontWeight: "600",
+                      }
+                    : {}
+                }
+              >
+                MY COURSES
+              </Link>
+            </li>
+          )}
+          {currentUser && (
+            <li className="nav-link">
+              <Link
+                to="/me"
+                style={
+                  history.location.pathname === "me"
+                    ? {
+                        color: "#fda82b",
+                        fontWeight: "600",
+                      }
+                    : {}
+                }
+              >
+                <img src={currentUser.profile_pic} alt="profile pic" />
+              </Link>
+            </li>
+          )}
         </ul>
-        <div className="nav-btns">
-          <Link to="/auth/register" className="register-btn">
-            REGISTER
-          </Link>
-        </div>
+        {!currentUser && (
+          <div className="nav-btns">
+            <Link to="/auth/login" className="register-btn">
+              LOGIN / REGISTER
+            </Link>
+            <Link
+              to="/auth/register-as-an-instructor"
+              className="instructor_register-btn"
+            >
+              BECOME AN INSTRUCTOR
+            </Link>
+          </div>
+        )}
       </nav>
     </header>
   );

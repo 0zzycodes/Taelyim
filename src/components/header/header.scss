@@ -49,7 +49,7 @@ $shadow: 0px 5px 6px #00000033;
       margin: auto;
       text-align: center;
       .nav-link {
-        margin: 0px 4em;
+        margin: 0px 3em;
         list-style: none;
         a {
           font-weight: normal;
@@ -67,15 +67,22 @@ $shadow: 0px 5px 6px #00000033;
 }
 
 .nav-btns {
-  background-color: $primaryColor;
   height: 6em;
-  padding: 0 2em;
   display: flex;
   align-items: center;
   justify-content: center;
-  .register-btn {
+  .register-btn,
+  .instructor_register-btn {
+    background-color: $primaryColor;
     // text-decoration: none;
     color: $whiteColor;
+    padding: 0 2em;
+    line-height: 5em;
     font-weight: 600;
+    // margin-right: 2em;
+    white-space: nowrap;
+  }
+  .instructor_register-btn {
+    background-color: $secondaryColor;
   }
 }

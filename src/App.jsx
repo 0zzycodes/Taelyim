@@ -19,7 +19,8 @@ import Spinner from "./components/spinner/spinner";
 import "./App.scss";
 import Courses from "./pages/courses/courses";
 import Auth from "./pages/auth/auth";
-import homepage from "./pages/homepage/homepage";
+import About from "./pages/about/about";
+import Contact from "./pages/contact/contact";
 
 class App extends React.Component {
   state = {
@@ -41,7 +42,6 @@ class App extends React.Component {
         });
       }
       setCurrentUser(userAuth);
-
       this.setState({
         isLoading: false,
       });
@@ -51,7 +51,7 @@ class App extends React.Component {
     this.unSubscribeFromAuth();
   }
   render() {
-    const { currentUser, history } = this.props;
+    const { history } = this.props;
     return (
       <div className="App">
         {history.location.pathname === "/signin" ? null : history.location
@@ -75,7 +75,9 @@ class App extends React.Component {
           ) : (
             <Switch>
               <Route exact path="/" component={Homepage} />
-              <Route exact path="/courses" component={Courses} />
+              <Route path="/courses" component={Courses} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/contact" component={Contact} />
               <Route path="/auth" component={Auth} />
             </Switch>
           )}

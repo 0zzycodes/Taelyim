@@ -14,8 +14,10 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
 
-export const createUserProfileDocument = async (userAuth, additionalData) => {
+export const createUserProfileDocument = async (userAuth, userNameAndRole) => {
   if (!userAuth) return;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
@@ -23,17 +25,33 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   const snapShot = await userRef.get();
 
   if (!snapShot.exists) {
-    const { displayName, email, photoURL, emailVerified } = userAuth;
-    const createdAt = new Date();
+    const { email, photoURL, emailVerified, uid } = userAuth;
+    const createdAt = Date.now();
+    const userData =
+      userNameAndRole.role === "Student"
+        ? {
+            id: uid,
+            name: userNameAndRole.name,
+            email,
+            created_at: createdAt,
+            profile_pic: photoURL,
+            role: userNameAndRole.role,
+            verified: emailVerified,
+            enrolled_courses: [],
+          }
+        : {
+            id: uid,
+            name: userNameAndRole.name,
+            email,
+            created_at: createdAt,
+            profile_pic: photoURL,
+            role: userNameAndRole.role,
+            verified: emailVerified,
+            created_courses: [],
+          };
+
     try {
-      await userRef.set({
-        displayName,
-        email,
-        createdAt,
-        photoURL,
-        emailVerified,
-        ...additionalData,
-      });
+      await userRef.set(userData);
     } catch (error) {
       console.log("error creating user", error.message);
     }
@@ -41,9 +59,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
   return userRef;
 };
-
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({

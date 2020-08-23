@@ -1,19 +1,13 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import {
-  auth,
-  signInWithGoogle,
-  createUserProfileDocument,
-} from "../../firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 import FormInput from "../form-input/form-input";
 import CustomButton from "../custom-button/custom-button";
 
 import loader from "../../assets/loader.gif";
-import google from "../../assets/google.svg";
 
-import "./register.scss";
+import "./instructorRegister.scss";
 
-export default class Register extends Component {
+export default class InstructorRegister extends Component {
   constructor() {
     super();
     this.state = {
@@ -41,20 +35,6 @@ export default class Register extends Component {
       });
       return;
     }
-    const actionCodeSettings = {
-      url: "https://www.example.com/finishSignUp?cartId=1234",
-      handleCodeInApp: true,
-      iOS: {
-        bundleId: "com.example.ios",
-      },
-      android: {
-        packageName: "com.example.android",
-        installApp: true,
-        minimumVersion: "12",
-      },
-      dynamicLinkDomain: "example.page.link",
-    };
-
     try {
       this.setState({ isLoading: true });
       const { user } = await auth.createUserWithEmailAndPassword(
@@ -63,10 +43,9 @@ export default class Register extends Component {
       );
       const userNameAndRole = {
         name: displayName,
-        role: "Student",
+        role: "Instructor",
       };
       await createUserProfileDocument(user, userNameAndRole);
-      await auth.sendSignInLinkToEmail(email, actionCodeSettings);
       this.setState({ isSuccess: true });
     } catch (error) {
       error.code === "auth/email-already-in-use"
@@ -144,20 +123,7 @@ export default class Register extends Component {
               {isLoading ? <img src={loader} alt="Loader" /> : null}
             </CustomButton>
           </div>
-          <p className="or-sign-in-with">Or sign in with:</p>
-          <div className="buttons">
-            <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
-              <img src={google} alt="Google Logo" /> Google Login
-            </CustomButton>
-          </div>
         </form>
-        <p>
-          {" "}
-          Already have an account?{" "}
-          <Link to="/auth/login">
-            <span>Login</span>
-          </Link>
-        </p>
       </div>
     );
   }
