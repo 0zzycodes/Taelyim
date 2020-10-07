@@ -1,0 +1,37 @@
+:root {
+  --rft-main-color: #01b2c6;
+  --rft-button-color: #87dbe4;
+  --rft-even-row-color: #f3f3f3;
+}
+$small-laptop: 1050px;
+$tablet: 850px;
+$smartphone: 600px;
+$primaryColor: #01b2c6;
+$primaryColorLight: #87dbe4;
+$textColor: #707070;
+$greenColor: #55ce63;
+$redColor: #e74424;
+$yellowColor: #ffbc35;
+$blackColor: #000000;
+$whiteColor: #ffffff;
+$secondaryColor: #f4f7f6;
+$shadow: 0px 3px 6px #00000015;
+$t-shadow: 0px 3px 6px #00000034;
+
+// Mixin
+@mixin small-laptop {
+  @media (max-width: #{$small-laptop}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}

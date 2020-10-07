@@ -1,0 +1,92 @@
+$small-laptop: 1050px;
+$tablet: 850px;
+$smartphone: 600px;
+$primaryColor: #01b2c6;
+$primaryColorLight: #87dbe4;
+$greenColor: #55ce63;
+$redColor: #e74424;
+$yellowColor: #ffbc35;
+$blackColor: #000000;
+$secondaryColor: #f4f7f6;
+$shadow: 0px 3px 6px #00000015;
+$t-shadow: 0px 3px 6px #00000034;
+
+// Mixin
+@mixin small-laptop {
+  @media (max-width: #{$small-laptop}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+.sidepanel {
+  height: 100%;
+  min-width: 260px;
+  box-shadow: 3px 0px 10px #00000021;
+  display: flex;
+  flex-direction: column;
+  // padding-top: 30px;
+  padding-bottom: 10px;
+  transition: all 0.4s ease;
+  overflow-x: hidden;
+  @include tablet() {
+    min-width: 70px;
+    width: 70px;
+  }
+
+  .dashboard-sidenav-links {
+    .link-btn {
+      display: flex;
+      padding: 15px 15px;
+      align-items: center;
+      cursor: pointer;
+      margin: 20px 0;
+      img {
+        height: 22px;
+        width: 22px;
+        margin-right: 20px;
+      }
+      letter-spacing: 1.5px;
+      span {
+        font-size: 12px;
+        transition: all 0.4s ease;
+        color: #707070;
+        font-weight: 500;
+        @include tablet() {
+          opacity: 0;
+        }
+      }
+    }
+  }
+  .logout {
+    margin-top: auto;
+    display: flex;
+    padding: 10px 15px;
+    align-items: center;
+    cursor: pointer;
+    // margin-left: 20px;
+    img {
+      height: 25px;
+      width: 25px;
+      margin-right: 20px;
+    }
+    letter-spacing: 1.5px;
+    span {
+      font-size: 14px;
+      color: $primaryColor;
+      transition: all 0.4s ease;
+      @include tablet() {
+        opacity: 0;
+      }
+    }
+  }
+}

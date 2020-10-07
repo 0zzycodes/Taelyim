@@ -19,3 +19,110 @@ $shadow: 0px 0px 3px 1px #ff8715;
     @content;
   }
 }
+@mixin shrinkLabel {
+  top: -18px;
+  font-size: 13px;
+  color: gray;
+}
+
+.contact-container {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px 5%;
+  @include smartphone() {
+    flex-direction: column;
+  }
+  main {
+    form {
+      padding: 20px;
+      text-align: left;
+      background-color: white;
+      width: 400px !important;
+      box-shadow: 0px 3px 6px #00000036;
+      h1,
+      p {
+        color: black;
+      }
+      h1 {
+        font-size: 25px;
+      }
+      p {
+        font-size: 14px;
+      }
+      .group {
+        margin: 0 !important;
+        .form-input-label {
+          font-size: 13px !important;
+        }
+      }
+      input {
+        width: 100%;
+        font-weight: lighter;
+        @include smartphone() {
+          width: 100%;
+        }
+      }
+      .text-area {
+        position: relative;
+        .expand {
+          height: 100px;
+        }
+        textarea {
+          background: none;
+          background-color: transparent;
+          font-size: 14px;
+          padding: 10px 10px 10px 5px;
+          display: block;
+          width: 100%;
+          border: none;
+          border-radius: 0;
+          border-bottom: 1px solid gray;
+          margin: 25px 0;
+          color: gray;
+          transition: all 0.5s;
+
+          &:focus {
+            outline: none;
+            height: 100px;
+          }
+
+          &:focus ~ .textarea-label {
+            @include shrinkLabel();
+          }
+        }
+      }
+      .textarea-label {
+        color: gray;
+        font-size: 13px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        top: 10px;
+        transition: 300ms ease all;
+
+        &.shrink {
+          @include shrinkLabel();
+        }
+      }
+      button {
+        font-family: Orkney;
+        background-color: white;
+        color: $primaryColor;
+        border: 1px solid $primaryColor;
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+}
+.right {
+  width: 25vw;
+  padding-right: 5%;
+  @include tablet() {
+    display: none;
+  }
+}

@@ -1,0 +1,203 @@
+$small-laptop: 1050px;
+$tablet: 850px;
+$smartphone: 600px;
+$primaryColor: #01b2c6;
+$primaryColorLight: #87dbe4;
+$textColor: #707070;
+$greenColor: #55ce63;
+$redColor: #e74424;
+$yellowColor: #ffbc35;
+$blackColor: #000000;
+$whiteColor: #ffffff;
+$secondaryColor: #f4f7f6;
+$shadow: 0px 3px 6px #00000015;
+$t-shadow: 0px 3px 6px #00000034;
+
+// Mixin
+@mixin small-laptop {
+  @media (max-width: #{$small-laptop}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+.admin-dashboard {
+  .admin-dashboard-main {
+    width: 100vw;
+    height: calc(100vh - 70px);
+    display: flex;
+    overflow-y: hidden;
+    .empty {
+      display: block;
+      font-size: 18px;
+      color: darken($color: $secondaryColor, $amount: 50);
+    }
+    .sidepanel {
+      height: 100%;
+      min-width: 260px;
+      box-shadow: 3px 0px 10px #00000021;
+      display: flex;
+      flex-direction: column;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      transition: all 0.4s ease;
+      overflow-x: hidden;
+      @include tablet() {
+        min-width: 70px;
+        width: 70px;
+      }
+    }
+    .admin-main {
+      height: calc(100vh - 70px);
+      width: calc(100% - 260px);
+      overflow-y: scroll;
+      overflow-x: hidden;
+      padding: 20px;
+      transition: all 0.3s ease;
+      background-color: $secondaryColor;
+      @include tablet() {
+        width: calc(100% - 80px);
+      }
+
+      .admin-buttons {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        .admin-btn {
+          cursor: pointer;
+          height: 50px !important;
+          padding: 0 !important;
+          width: 160px;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          text-align: center;
+          background-color: #6ab5b9;
+          color: $secondaryColor;
+          box-sizing: border-box;
+          margin: 10px;
+          border: none;
+          box-shadow: $shadow;
+          font-weight: 700 !important;
+          img {
+            height: 20px;
+          }
+          &:active {
+            box-shadow: 0px 4px 6px #00000000;
+          }
+        }
+        .published {
+          background-color: #eab88c;
+        }
+        .drafts {
+          background-color: #eab88c;
+        }
+        .trash {
+          background-color: #eab88c;
+        }
+        .admin-info-buttons {
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+          @include tablet() {
+            display: none;
+          }
+        }
+      }
+      .admin-blog-posts,
+      .trashes,
+      .drafts {
+        height: calc(100% - 110px);
+        overflow-y: scroll;
+        padding: 30px;
+        margin-top: 10px;
+        .admin-blog-post,
+        .admin-draft-preview {
+          width: 80%;
+          min-height: 100px;
+          box-shadow: $shadow;
+          margin: 5px 0px;
+          padding: 15px;
+          display: flex;
+          @include small-laptop() {
+            width: 100%;
+          }
+          @include tablet() {
+            flex-wrap: wrap;
+          }
+          justify-content: flex-start;
+          .tumbnail {
+            margin-right: 20px;
+            @include smartphone() {
+              margin: 0;
+            }
+            img {
+              width: 220px;
+              height: 220px;
+              @include smartphone() {
+                width: 100%;
+              }
+            }
+          }
+          .text {
+            text-align: left;
+            margin-right: 10px;
+            display: flex;
+            flex-direction: column;
+            .title {
+              font-size: 20px;
+              text-transform: uppercase;
+              margin-bottom: 10px;
+            }
+            .truncate-text {
+              font-size: 14px;
+              line-height: 25px;
+            }
+          }
+          .controls {
+            margin-left: auto;
+            @include tablet() {
+              display: flex;
+              align-items: center;
+            }
+            .ctrl {
+              width: 40px !important;
+              height: 40px !important;
+              box-shadow: $shadow;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              margin: 5px;
+              padding: 0 !important;
+              img {
+                width: 15px;
+                margin: auto;
+              }
+            }
+          }
+        }
+      }
+    }
+    .contract-sidepanel {
+      min-width: 50px !important;
+      width: 70px;
+    }
+    .expand-main {
+      width: calc(100% - 70px) !important;
+    }
+  }
+}

@@ -1,19 +1,25 @@
-$tablet: 850px;
+$small-laptop-screen: 1400px;
+$tablet: 1200px;
 $smartphone: 500px;
 $primaryColor: #ff8715;
 $secondaryColor: #272c42;
 $blackColor: #0e0e0e;
 $grayColor: #707070;
 $whiteColor: #ffffff;
-$shadow: 0px 5px 6px #00000033;
+$shadow: 0px 3px 6px #0000001f;
 
 // Mixin
+@mixin small-laptop-screen {
+  @media (max-width: #{$small-laptop-screen}) {
+    @content;
+  }
+}
+
 @mixin tablet {
   @media (max-width: #{$tablet}) {
     @content;
   }
 }
-
 @mixin smartphone {
   @media (max-width: #{$smartphone}) {
     @content;
@@ -38,6 +44,12 @@ $shadow: 0px 5px 6px #00000033;
     }
   }
   nav {
+    @include small-laptop-screen() {
+      margin-left: auto;
+    }
+    @include tablet() {
+      display: none;
+    }
     display: flex;
     -webkit-box-shadow: $shadow;
     -moz-box-shadow: $shadow;
@@ -57,6 +69,7 @@ $shadow: 0px 5px 6px #00000033;
           line-height: 1.8em;
           font-weight: 100 !important;
           // text-decoration: none;
+          white-space: nowrap;
           &:hover {
             color: $primaryColor;
           }
@@ -72,7 +85,8 @@ $shadow: 0px 5px 6px #00000033;
   align-items: center;
   justify-content: center;
   .register-btn,
-  .instructor_register-btn {
+  .instructor_register-btn,
+  .my-dashboard-btn {
     background-color: $primaryColor;
     // text-decoration: none;
     color: $whiteColor;
@@ -82,7 +96,8 @@ $shadow: 0px 5px 6px #00000033;
     // margin-right: 2em;
     white-space: nowrap;
   }
-  .instructor_register-btn {
+  .instructor_register-btn,
+  .my-dashboard-btn {
     background-color: $secondaryColor;
   }
 }

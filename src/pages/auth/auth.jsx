@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, Route, withRouter } from "react-router-dom";
-import CustomHero from "../../components/custom-hero/custom-hero";
 import Login from "../../components/login/login";
-import "./auth.scss";
 import Register from "../../components/register/register";
 import InstructorRegister from "../../components/instructorRegister/instructorRegister";
+import "./auth.scss";
+
 const Auth = ({ history }) => {
   return (
     <div className="auth">

@@ -1,0 +1,67 @@
+$small-laptop: 1050px;
+$tablet: 850px;
+$smartphone: 600px;
+$primaryColor: #01b2c6;
+$primaryColorLight: #87dbe4;
+$textColor: #707070;
+$greenColor: #55ce63;
+$redColor: #e74424;
+$yellowColor: #ffbc35;
+$blackColor: #000000;
+$whiteColor: #ffffff;
+$secondaryColor: #f4f7f6;
+$shadow: 0px 3px 6px #00000015;
+$t-shadow: 0px 3px 6px #00000034;
+
+// Mixin
+@mixin small-laptop {
+  @media (max-width: #{$small-laptop}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+.dashboard-doctors {
+  .btn {
+    cursor: pointer;
+    height: 50px !important;
+    padding: 0 !important;
+    width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    background-color: $primaryColor;
+    color: $secondaryColor;
+    box-sizing: border-box;
+    border: none;
+    box-shadow: $shadow;
+    font-weight: 700 !important;
+    img {
+      height: 20px;
+    }
+    &:active {
+      box-shadow: 0px 4px 6px #00000000;
+    }
+  }
+  .head {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .doctor-lists {
+    display: flex;
+    align-items: center;
+    // justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+}

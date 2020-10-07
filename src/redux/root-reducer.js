@@ -1,25 +1,22 @@
-import { combineReducers } from 'redux';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { combineReducers } from "redux";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-import BlogReducer from './blog/blog.reducer';
-import ForumReducer from './forum/forum.reducer';
-import UserReducer from './user/user.reducer';
-import PodcastReducer from './podcast/podcast.reducer';
-import ComingSoonReducer from './coming-soon/coming-soon.reducer';
+import AdminReducer from "./admin/reducers";
+import { DashboardReducer, DashboarCoursedReducer } from "./dashboard/reducers";
+import UserReducer from "./user/reducers";
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
-  whitelist: ['comingSoon', 'blog', 'forum', 'podcast'],
+  whitelist: ["admin", "dashboard"],
 };
 
 const rootReducer = combineReducers({
-  blog: BlogReducer,
-  forum: ForumReducer,
+  admin: AdminReducer,
+  dashboard: DashboardReducer,
+  dashboard_course: DashboarCoursedReducer,
   user: UserReducer,
-  podcast: PodcastReducer,
-  comingSoon: ComingSoonReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

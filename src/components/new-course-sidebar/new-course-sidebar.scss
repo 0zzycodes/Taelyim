@@ -1,0 +1,143 @@
+$small-laptop: 1050px;
+$tablet: 850px;
+$smartphone: 600px;
+$primaryColor: #ff8715;
+$secondPrimary: #272c42;
+$textColor: #707070;
+$greenColor: #55ce63;
+$redColor: #e74424;
+$yellowColor: #ffbc35;
+$blackColor: #000000;
+$whiteColor: #ffffff;
+$secondaryColor: #f4f7f6;
+$shadow: 0px 3px 6px #00000015;
+$t-shadow: 0px 3px 6px #00000034;
+
+// Mixin
+@mixin small-laptop {
+  @media (max-width: #{$small-laptop}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+
+.new-course-sidebar {
+  width: 300px;
+  background-color: $secondPrimary;
+  height: calc(100vh - 70px);
+  overflow-y: scroll;
+  padding: 10px;
+  .btn {
+    cursor: pointer;
+    height: 35px !important;
+    padding: 0 15px !important;
+    // width: 110px;
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: $primaryColor;
+    color: $secondaryColor;
+    box-sizing: border-box;
+    border: none;
+    box-shadow: $shadow;
+    font-weight: 500 !important;
+    margin: 0px !important;
+    margin-top: 20px !important;
+    img {
+      height: 15px;
+      margin-right: 10px;
+    }
+    span {
+      display: block;
+      font-weight: 600;
+    }
+    &:active {
+      box-shadow: 0px 4px 6px #00000000;
+    }
+  }
+  .new-course-sidebar-course-details {
+    margin: 10px auto;
+    width: 90%;
+    margin: auto;
+    background-color: $whiteColor;
+    padding: 20px;
+    h1 {
+      font-size: 15px;
+      letter-spacing: 3px;
+    }
+    p {
+      font-size: 13px;
+      font-weight: 200;
+    }
+  }
+  .modules {
+    padding: 20px 0;
+    .module {
+      min-height: 50px;
+      width: 90%;
+      background-color: $whiteColor;
+      padding: 20px;
+      margin: 10px auto;
+      transition: all 0.3s ease;
+
+      .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        .title {
+          font-size: 13px;
+        }
+        svg {
+          width: 13px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+      }
+      .topics {
+        .active {
+          border-color: $textColor !important;
+        }
+        .topic {
+          cursor: pointer;
+          margin: 10px 5px;
+          box-shadow: $shadow;
+          border: 2px solid $whiteColor;
+          padding: 10px;
+          &:hover {
+            border-color: $textColor;
+          }
+          h5 {
+            font-size: 15px;
+            margin-bottom: 10px;
+          }
+
+          .type {
+            display: flex;
+            align-items: center;
+            img {
+              width: 20px;
+              margin-right: 10px;
+            }
+            span {
+              font-size: 12px;
+              color: $textColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}

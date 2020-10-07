@@ -1,0 +1,122 @@
+$small-laptop: 1050px;
+$tablet: 850px;
+$smartphone: 600px;
+$primaryColor: #01b2c6;
+$primaryColorLight: #87dbe4;
+$textColor: #707070;
+$greenColor: #55ce63;
+$redColor: #e74424;
+$yellowColor: #ffbc35;
+$blackColor: #000000;
+$whiteColor: #ffffff;
+$secondaryColor: #f4f7f6;
+$shadow: 0px 3px 6px #00000015;
+$t-shadow: 0px 3px 6px #00000034;
+
+// Mixin
+@mixin small-laptop {
+  @media (max-width: #{$small-laptop}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+
+.instructor-preview-wrapper {
+  padding: 10px;
+  flex: 0 0 calc(100% / 4);
+  max-width: calc(100% / 4);
+
+  @include tablet() {
+    flex: 0 0 calc(100% / 3);
+    max-width: calc(100% / 3);
+  }
+
+  @include smartphone() {
+    flex: 0 0 calc(100% / 2);
+    max-width: calc(100% / 2);
+  }
+  .instructor-preview {
+    background-color: $whiteColor;
+    border-radius: 10px;
+    min-height: 150px;
+    padding: 15px;
+    padding-bottom: 0;
+    box-shadow: $shadow;
+    display: flex;
+    flex-direction: column;
+    .instructor-preview-main {
+      display: flex;
+      .avatar-container {
+        height: 80px;
+        width: 80px;
+        margin-right: 10px;
+        .avatar {
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .instructor-preview-main-info {
+        h4 {
+          font-size: 15px;
+          color: $textColor;
+        }
+        .name {
+          text-shadow: $t-shadow;
+        }
+        .department {
+          font-size: 14px;
+          color: lighten($color: $textColor, $amount: 30);
+        }
+        .billing {
+          display: block;
+          margin: 10px 0px;
+          font-size: 14px;
+          font-weight: 500;
+          color: $textColor;
+        }
+        .activities {
+          height: 30px !important;
+          width: 110px;
+          font-size: 12px;
+        }
+      }
+    }
+    .instructor-preview-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      .location {
+        display: flex;
+        align-items: center;
+        img {
+          height: 15px;
+          margin-right: 5px;
+        }
+        .city-country {
+          font-size: 13px;
+          font-weight: 300;
+          color: $textColor;
+        }
+      }
+      .presence {
+        display: block;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background-color: $greenColor;
+      }
+    }
+  }
+}

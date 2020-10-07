@@ -1,0 +1,157 @@
+$small-laptop-screen: 1200px;
+$tablet: 950px;
+$smartphone: 500px;
+$primaryColor: #ff8715;
+$secondaryColor: #272c42;
+$textColor: #707070;
+$greenColor: #55ce63;
+$redColor: #e74424;
+$yellowColor: #ffbc35;
+$blackColor: #000000;
+$whiteColor: #ffffff;
+$secondaryColor: #f4f7f6;
+$shadow: 0px 3px 6px #00000015;
+$t-shadow: 0px 3px 6px #00000034;
+
+// Mixin
+@mixin small-laptop {
+  @media (max-width: #{$small-laptop}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone}) {
+    @content;
+  }
+}
+
+.dashboard-navbar {
+  width: 100%;
+  box-shadow: $shadow;
+  display: flex;
+  align-items: center;
+  background-color: $primaryColor;
+  min-height: 70px;
+  .logo_menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    padding: 0 20px;
+    padding-left: 0px;
+    min-width: 260px;
+    @include tablet() {
+      min-width: 80px !important;
+      padding-left: 0px;
+    }
+    .logo-text {
+      padding-left: 20px;
+    }
+    a {
+      padding: 0 !important;
+      margin: 0 !important ;
+      transition: all 0.4s ease;
+      @include tablet() {
+        display: none;
+      }
+      img {
+        padding: 0 !important;
+        margin: 0 !important ;
+        height: 55px;
+        // width: 25px;
+      }
+    }
+    .logo-text {
+      text-shadow: $t-shadow;
+      color: $secondaryColor;
+    }
+    .menu {
+      cursor: pointer;
+      @include tablet() {
+        padding-left: 20px;
+      }
+      img {
+        height: 25px;
+        width: 25px;
+      }
+    }
+  }
+  .route-notification-user {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    padding: 0 20px;
+    .route {
+      span {
+        font-size: 15px;
+        font-weight: 700;
+        color: $secondaryColor;
+        letter-spacing: 3px;
+      }
+    }
+    .notification {
+      padding-top: 5px;
+      margin-left: auto;
+      position: relative;
+      cursor: pointer;
+      img {
+        margin: auto;
+        width: 25px;
+        height: 25px;
+      }
+      .notification-count {
+        position: absolute;
+        top: -15px;
+        right: -5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: $shadow;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 0;
+        margin-top: 10px;
+        background-color: #e74424;
+        color: $secondaryColor;
+      }
+    }
+    .user {
+      margin-left: 30px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      .avatar-container {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          margin: auto;
+          width: 90%;
+          height: 90%;
+        }
+      }
+      span {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-shadow: $t-shadow;
+        color: $secondaryColor;
+      }
+    }
+  }
+}

@@ -25,7 +25,7 @@ export const createUserProfileDocument = async (userAuth, userNameAndRole) => {
   const snapShot = await userRef.get();
 
   if (!snapShot.exists) {
-    const { email, photoURL, emailVerified, uid } = userAuth;
+    const { email, emailVerified, uid } = userAuth;
     const createdAt = Date.now();
     const userData =
       userNameAndRole.role === "Student"
@@ -34,7 +34,7 @@ export const createUserProfileDocument = async (userAuth, userNameAndRole) => {
             name: userNameAndRole.name,
             email,
             created_at: createdAt,
-            profile_pic: photoURL,
+            profile_image: `https://api.adorable.io/avatars/285/${uid}.png`,
             role: userNameAndRole.role,
             verified: emailVerified,
             enrolled_courses: [],
@@ -44,7 +44,7 @@ export const createUserProfileDocument = async (userAuth, userNameAndRole) => {
             name: userNameAndRole.name,
             email,
             created_at: createdAt,
-            profile_pic: photoURL,
+            profile_image: `https://api.adorable.io/avatars/285/${uid}.png`,
             role: userNameAndRole.role,
             verified: emailVerified,
             created_courses: [],

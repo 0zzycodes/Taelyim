@@ -3,32 +3,19 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import logo from "../../assets/logo.png";
-import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { selectCurrentUser } from "../../redux/user/selectors";
 
 import "./header.scss";
 const Header = ({ currentUser, history }) => {
   return (
     <header className="header">
       <div className="logo">
-        <img src={logo} alt="logo" />
+        <Link to="/">
+          <img src={logo} alt="logo" />
+        </Link>
       </div>
       <nav>
         <ul className="nav-links">
-          <li className="nav-link">
-            <Link
-              to="/"
-              style={
-                history.location.pathname === "/"
-                  ? {
-                      color: "#fda82b",
-                      fontWeight: "600",
-                    }
-                  : {}
-              }
-            >
-              HOME
-            </Link>
-          </li>
           <li className="nav-link">
             <Link
               to="/courses"
@@ -75,12 +62,12 @@ const Header = ({ currentUser, history }) => {
               CONTACT US
             </Link>
           </li>
-          {currentUser && (
+          {currentUser && currentUser.role === "Student" && (
             <li className="nav-link">
               <Link
-                to="/my-couses"
+                to="/my-courses"
                 style={
-                  history.location.pathname === "/my-couses"
+                  history.location.pathname === "/my-courses"
                     ? {
                         color: "#fda82b",
                         fontWeight: "600",
@@ -92,7 +79,7 @@ const Header = ({ currentUser, history }) => {
               </Link>
             </li>
           )}
-          {currentUser && (
+          {currentUser && currentUser.role === "Student" && (
             <li className="nav-link">
               <Link
                 to="/me"
@@ -110,6 +97,13 @@ const Header = ({ currentUser, history }) => {
             </li>
           )}
         </ul>
+        {currentUser && currentUser.role === "Instructor" && (
+          <div className="nav-btns">
+            <Link to="/dashboard" className="my-dashboard-btn">
+              DASHBOARD
+            </Link>
+          </div>
+        )}
         {!currentUser && (
           <div className="nav-btns">
             <Link to="/auth/login" className="register-btn">
